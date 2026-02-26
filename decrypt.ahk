@@ -1,17 +1,23 @@
 ﻿#include <FindText>
-Text:="|<>*196$98.0400000000k00000k3U000k600A00000A1w000A1U030000030T00030M00k00000k3U000k600A00000A0s000A1XD30y1w1v0C00030MwsktkvVrk3U000k6C6AA608MQ0s000A1X0n61U3A30C00030MkAlUMDn0k3U000k6A3AM6DwkBUsA00A1X0n61W3A3M030030EkAlUNUn0q00k00sAC6AQ4MQkRU0A007y3nX3b3D7TTzz000T0rUkD0Qkwrzzk0000A00000000000000030000000000000000k000000000000000A000000000000000300000000U"
+
+CoordMode "Mouse","Screen"
 WinActivate("ahk_exe chrome.exe")
 HotIfWinActive("ahk_exe chrome.exe")
-if (ok:=FindText(&X, &Y,  , , , , , ,Text))
+;if (ok:=FindText(&X,&Y,,,,,,,Text))
+;{
+  ;MsgBox(ok)
+  ;MsgBox(X)
+  ;MsgBox(Y)
+  ;FindText().Click(X, Y, "L")
+  ;MouseClick(,ok[1].x,ok[1].y)
+;}
+
+Text:="|<>*210$65.00007000007k600C00000DUA00Q00000T0M00s00000y0k01k00001w1XT3Vy1w3vs37z77y7wDzk6C7CQC8QsTUAM6QkA0NUz0MkAtUMDn0q0lUNn0lza1g1X0na1b3A3M761bA3ACMCsAC6CQCMQsQzkTwQTszszsz0rksTUykyk01U0000000003000000000060000000000A0000000000M00000004"
+if (ok:=FindText(&X, &Y, 985-150000, 664-150000, 985+150000, 664+150000, 0, 0, Text))
 {
+  FindText().Click(X, Y, "L")
   MsgBox(ok)
-  MsgBox(X)
-  MsgBox(Y)
-  ; FindText().Click(X, Y, "L")
-  MouseClick(,ok[1].x,ok[1].y)
-}
-
-
+  }
 
 
 
