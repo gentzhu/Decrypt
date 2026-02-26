@@ -1,36 +1,40 @@
-﻿#include <FindText>
-
-CoordMode "Mouse","Screen"
+#Requires AutoHotkey v2.0
+#include <FindText>
+Text:=X:=Y:=""
+Text:="|<>*211$19.04007003U03s00s00Q00C007003U01k00s0kQ6M03A01a00nzztzzx"
+^2::{
+Send "{F2}"
+sleep 100
+Send "^a"
+sleep 100
+Send "^c"
+sleep 100
+Send "{Esc}"
+sleep 100
 WinActivate("ahk_exe chrome.exe")
 HotIfWinActive("ahk_exe chrome.exe")
-;if (ok:=FindText(&X,&Y,,,,,,,Text))
-;{
-  ;MsgBox(ok)
-  ;MsgBox(X)
-  ;MsgBox(Y)
-  ;FindText().Click(X, Y, "L")
-  ;MouseClick(,ok[1].x,ok[1].y)
-;}
-
-Text:="|<>*210$65.00007000007k600C00000DUA00Q00000T0M00s00000y0k01k00001w1XT3Vy1w3vs37z77y7wDzk6C7CQC8QsTUAM6QkA0NUz0MkAtUMDn0q0lUNn0lza1g1X0na1b3A3M761bA3ACMCsAC6CQCMQsQzkTwQTszszsz0rksTUykyk01U0000000003000000000060000000000A0000000000M00000004"
-if (ok:=FindText(&X, &Y, 985-150000, 664-150000, 985+150000, 664+150000, 0, 0, Text))
+if (ok:=FindText(&X, &Y, 1093-150000, 933-150000, 1093+150000, 933+150000, 0, 0, Text))
 {
-  FindText().Click(X, Y, "L")
-  MsgBox(ok)
-  }
+   FindText().Click(X, Y, "L")
+   Sleep 1000
+   Send A_Clipboard
+   sleep 200
+   send "{Enter}"
+   sleep 200
+   send "{Enter}"
+   Text:=X:=Y:=""
+   Text:="|<>*178$17.0200zU3XUC1Us33bWCP4taNaQmNn1bA6QkNn0lA30k3307A07k0201"
+   if (ok:=FindText(&X, &Y, 370-150000, 677-150000, 370+150000, 677+150000, 0, 0, Text))
+   {
+     FindText().mousemove(X, Y)
+     Text:=X:=Y:=""
 
+      Text:="|<>*179$19.0C007003U01k00s00Q00C007007k03s00s0k86M03A01a00nzztzzx"
 
-
-
-
-
-
-
-
-
-
-
-; ok:=FindText(&X:="wait", &Y:=3, 0,0,0,0,0,0,Text)  ; 等待3秒等图像出现
-; ok:=FindText(&X:="wait0", &Y:=-1, 0,0,0,0,0,0,Text)  ; 无限等待等图像消失
-
-
+      if (ok:=FindText(&X, &Y, 676-150000, 677-150000, 676+150000, 677+150000, 0, 0, Text))
+      {
+      FindText().Click(X, Y, "L")
+      }
+   }
+}
+}
