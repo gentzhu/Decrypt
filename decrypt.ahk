@@ -1,7 +1,7 @@
 #Requires AutoHotkey v2.0
 #include <FindText>
-Text:=X:=Y:=""
-Text:="|<>*211$19.04007003U03s00s00Q00C007003U01k00s0kQ6M03A01a00nzztzzx"
+upload:=upX:=upY:=""
+upload:="|<>*211$19.04007003U03s00s00Q00C007003U01k00s0kQ6M03A01a00nzztzzx"
 ^2::{
 Send "{F2}"
 sleep 100
@@ -13,28 +13,52 @@ Send "{Esc}"
 sleep 100
 WinActivate("ahk_exe chrome.exe")
 HotIfWinActive("ahk_exe chrome.exe")
-if (ok:=FindText(&X, &Y, 1093-150000, 933-150000, 1093+150000, 933+150000, 0, 0, Text))
+if (ok:=FindText(&upX, &upY, 1093-150000, 933-150000, 1093+150000, 933+150000, 0, 0, upload))
 {
-   FindText().Click(X, Y, "L")
-   Sleep 1000
-   Send A_Clipboard
+   i:=WinGetCount("ahk_exe chrome.exe")
+   FindText().Click(ok[2].x, ok[2].y, "L")
+   j:=""
+   loop{
+   if(j==i+1)
+   break
+      else{
+   j:=WinGetCount("ahk_exe chrome.exe")
+   Sleep 100
+         }}
+   ;send "{Shift}"
+   ;sleep 200
+   Send "^v"
    sleep 200
+   ;send "{Enter}"
+   ;sleep 200
    send "{Enter}"
-   sleep 200
-   send "{Enter}"
-   Text:=X:=Y:=""
-   Text:="|<>*178$17.0200zU3XUC1Us33bWCP4taNaQmNn1bA6QkNn0lA30k3307A07k0201"
-   if (ok:=FindText(&X, &Y, 370-150000, 677-150000, 370+150000, 677+150000, 0, 0, Text))
-   {
-     FindText().mousemove(X, Y)
-     Text:=X:=Y:=""
-
-      Text:="|<>*179$19.0C007003U01k00s00Q00C007007k03s00s0k86M03A01a00nzztzzx"
-
-      if (ok:=FindText(&X, &Y, 676-150000, 677-150000, 676+150000, 677+150000, 0, 0, Text))
+   ;sleep 3000
+   file:=fX:=fY:=""
+   file:="|<>*178$17.0200zU3XUC1Us33bWCP4taNaQmNn1bA6QkNn0lA30k3307A07k0201"
+   if(result:=FindText(X:="wait", Y:=20, 370-150000, 677-150000, 370+150000, 677+150000, 0, 0, file))
+   {   if (ok:=FindText(&fX, &fY, 370-150000, 677-150000, 370+150000, 677+150000, 0, 0, file))
       {
-      FindText().Click(X, Y, "L")
+         mousemove(fX, fY)
+         Sleep 200
+         Download:=dlX:=dlY:=""
+         Download:="|<>*179$19.0C007003U01k00s00Q00C007007k03s00s0k86M03A01a00nzztzzx"
+         if (res:=FindText(&dlX, &dlY, 676-150000, 677-150000, 676+150000, 677+150000, 0, 0, Download))
+         {
+         FindText().Click(dlX, dlY, "L")
+         Sleep 500
+            delete:=deX:=deY:=""
+            delete:="|<>*175$19.1zk1zw0k63zzvzzyM0AA06603301VU0kk0MM0AA06603301UU0UE0EDzs7zwE"
+            if (ok:=FindText(&deX, &deY, 920-150000, 814-150000, 920+150000, 814+150000, 0, 0, delete))
+            {
+            FindText().Click(deX, deY, "L")
+            }
+         }
       }
+   }
+   else
+   {
+      MsgBox "didn't find the file icon"
+      ExitApp
    }
 }
 }
