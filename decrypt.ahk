@@ -11,6 +11,7 @@ send "^2"
 ;b:=A_Clipboard
 WinActivate("ahk_exe chrome.exe")
 HotIfWinActive("ahk_exe chrome.exe")
+Send "^0"
 if (outcome:=FindText(X:="wait", Y:=20, 370-150000, 677-150000, 370+150000, 677+150000, 0, 0, upload))
 {   if (ok:=FindText(&upX, &upY, 1093-150000, 933-150000, 1093+150000, 933+150000, 0, 0, upload))
    {
@@ -33,15 +34,7 @@ if (outcome:=FindText(X:="wait", Y:=20, 370-150000, 677-150000, 370+150000, 677+
       A_Clipboard:=a
       Send "^v"
       sleep 500
-      send "{Enter}"
-      sleep 200
-      send "{Esc}"
-      sleep 200
-      send "{Enter}"
-      sleep 200
-      send "{Enter}"
-      sleep 200
-      send "{Enter}"
+      send "!o"
       ;sleep 3000
       file:=fX:=fY:=""
       file:="|<>*178$17.0200zU3XUC1Us33bWCP4taNaQmNn1bA6QkNn0lA30k3307A07k0201"
@@ -75,4 +68,5 @@ if (outcome:=FindText(X:="wait", Y:=20, 370-150000, 677-150000, 370+150000, 677+
 {MsgBox "didn't find the upload icon"
 Exit
 }
+Send "!{tab}"
 }
